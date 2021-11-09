@@ -1,0 +1,387 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <Body>
+    <ReportItems>
+      <Textbox Name="TxtInitChargeAndCMemo">
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=code.SetChargeAndCMemo(0, 0)</Value>
+                <Style />
+                <Label>code.SetChargeAndCMemo(0, 0)</Label>
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <Height>0.01in</Height>
+        <Width>1in</Width>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Textbox>
+      <Tablix Name="Tablix1">
+        <TablixBody>
+          <TablixColumns>
+            <TablixColumn>
+              <Width>1in</Width>
+            </TablixColumn>
+            <TablixColumn>
+              <Width>1in</Width>
+            </TablixColumn>
+          </TablixColumns>
+          <TablixRows>
+            <TablixRow>
+              <Height>0.12333in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Rectangle Name="Rectangle1">
+                      <KeepTogether>true</KeepTogether>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                      </Style>
+                    </Rectangle>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="Textbox1">
+                      <CanGrow>true</CanGrow>
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value />
+                              <Style />
+                              <Label>Textbox1</Label>
+                            </TextRun>
+                          </TextRuns>
+                          <Style />
+                        </Paragraph>
+                      </Paragraphs>
+                      <rd:DefaultName>Textbox1</rd:DefaultName>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <PaddingLeft>2pt</PaddingLeft>
+                        <PaddingRight>2pt</PaddingRight>
+                        <PaddingTop>2pt</PaddingTop>
+                        <PaddingBottom>2pt</PaddingBottom>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+            <TablixRow>
+              <Height>0.1875in</Height>
+              <TablixCells>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="TxtChargeTotal">
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>= sum(Fields!Charge.Value)  +  sum(Fields!DocDtlTranAmt.Value)</Value>
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                                <Format>= "N" + CStr(First(Fields!DecimalsGeneral.Value, "RptParameter"))</Format>
+                                <TextDecoration>Underline</TextDecoration>
+                              </Style>
+                              <Label>Charge...</Label>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                      </Style>
+                    </Textbox>
+                    <rd:Selected>true</rd:Selected>
+                  </CellContents>
+                </TablixCell>
+                <TablixCell>
+                  <CellContents>
+                    <Textbox Name="TxtCreditTotal">
+                      <KeepTogether>true</KeepTogether>
+                      <Paragraphs>
+                        <Paragraph>
+                          <TextRuns>
+                            <TextRun>
+                              <Value>= sum(CDec(Fields!CMemo.Value)) + sum(Cdec(Fields!DocDtlTranAmtSignAdjusted.Value))</Value>
+                              <Style>
+                                <FontWeight>Bold</FontWeight>
+                                <Format>= "N" + CStr(First(Fields!DecimalsGeneral.Value, "RptParameter"))</Format>
+                                <TextDecoration>Underline</TextDecoration>
+                              </Style>
+                              <Label>CMemo...</Label>
+                            </TextRun>
+                          </TextRuns>
+                          <Style>
+                            <TextAlign>Right</TextAlign>
+                          </Style>
+                        </Paragraph>
+                      </Paragraphs>
+                      <ZIndex>1</ZIndex>
+                      <Style>
+                        <Border>
+                          <Style>None</Style>
+                        </Border>
+                        <PaddingRight>4pt</PaddingRight>
+                      </Style>
+                    </Textbox>
+                  </CellContents>
+                </TablixCell>
+              </TablixCells>
+            </TablixRow>
+          </TablixRows>
+        </TablixBody>
+        <TablixColumnHierarchy>
+          <TablixMembers>
+            <TablixMember />
+            <TablixMember />
+          </TablixMembers>
+        </TablixColumnHierarchy>
+        <TablixRowHierarchy>
+          <TablixMembers>
+            <TablixMember>
+              <Group Name="InvoiceNum">
+                <GroupExpressions>
+                  <GroupExpression>=Fields!InvoiceNum.Value</GroupExpression>
+                  <GroupExpression>=Fields!CashDtl_InvoiceNum.Value</GroupExpression>
+                </GroupExpressions>
+              </Group>
+              <SortExpressions>
+                <SortExpression>
+                  <Value>=Fields!InvoiceNum.Value</Value>
+                </SortExpression>
+              </SortExpressions>
+              <TablixMembers>
+                <TablixMember>
+                  <Group Name="Details1">
+                    <PageBreak>
+                      <BreakLocation>StartAndEnd</BreakLocation>
+                    </PageBreak>
+                  </Group>
+                  <Visibility>
+                    <Hidden>
+                      =code.SetChargeAndCMemo(
+                      iif(Fields!DocInvoiceAmt.Value &gt; 0,
+                      iif(
+                      (
+                      (Fields!Calc_Reversed.Value = TRUE and Fields!TranType.Value = "PayInv") or (LEFT(Fields!TranType.Value, 2) = "CM" and Fields!InvoiceNum.Value = previous(Fields!InvoiceNum.Value) and Fields!InvoiceRef.Value &lt;&gt; Previous(Fields!InvoiceRef.Value))), code.Charge, code.Charge + Fields!DocInvoiceAmt.Value), code.Charge)
+                      ,iif(Fields!DocInvoiceAmt.Value &lt; 0 and Fields!InvoiceNum.Value &lt;&gt; Previous(Fields!InvoiceNum.Value), code.CMemo + (Fields!DocInvoiceAmt.Value * -1), code.CMemo))
+                    </Hidden>
+                  </Visibility>
+                </TablixMember>
+              </TablixMembers>
+            </TablixMember>
+            <TablixMember>
+              <KeepWithGroup>Before</KeepWithGroup>
+            </TablixMember>
+          </TablixMembers>
+        </TablixRowHierarchy>
+        <DataSetName>Customer_InvcHead_CashDtl</DataSetName>
+        <Top>0.015in</Top>
+        <Height>0.31083in</Height>
+        <Width>2in</Width>
+        <ZIndex>1</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+        </Style>
+      </Tablix>
+    </ReportItems>
+    <Height>0.32583in</Height>
+    <Style />
+  </Body>
+  <Width>2.00084in</Width>
+  <Page>
+    <LeftMargin>1in</LeftMargin>
+    <RightMargin>1in</RightMargin>
+    <TopMargin>1in</TopMargin>
+    <BottomMargin>1in</BottomMargin>
+    <Style />
+  </Page>
+  <AutoRefresh>0</AutoRefresh>
+  <DataSources>
+    <DataSource Name="CustSt_Total">
+      <DataSourceReference>/MTPilotSSRS/reports/SharedReportDataSource</DataSourceReference>
+      <rd:SecurityType>Integrated</rd:SecurityType>
+      <rd:DataSourceID>496a6da6-4063-414f-aad2-03ba34221a51</rd:DataSourceID>
+    </DataSource>
+  </DataSources>
+  <DataSets>
+    <DataSet Name="Customer_InvcHead_CashDtl">
+      <Query>
+        <DataSourceName>CustSt_Total</DataSourceName>
+        <CommandText>
+          ="  SELECT T1.CustID, T2.DocInvoiceAmt,T2.DocInvoiceBal,T2.DocWithholdAmt,T2.InvoiceNum,T2.CreditMemo,T2.CurrencyCode_CurrDesc,T2.InvoiceSuffix,T2.InvoiceType, T3.CheckRef,T3.DocTranAmt,T3.InvoiceRef,T3.InvoiceNum as CashDtl_InvoiceNum,T3.TranType,T3.Calc_Reversed,T3.Calc_DetailLine,CAST( T3.Calc_IsCM as nvarchar ) as Calc_IsCM, T3.Calc_DisplayAmount, T3.Calc_DocDtlTranAmount, T3.Calc_DocDtlTranAmountSignAdjusted, ISNULL(T3.Calc_Charge,T2.Calc_Charge) Calc_Charge, ISNULL(T3.Calc_CMemo, T2.Calc_CMemo) Calc_CMemo
+          FROM Customer_" + Parameters!TableGuid.Value + " T1
+          LEFT OUTER JOIN InvcHead_" + Parameters!TableGuid.Value + " T2
+          ON T1.Company = T2.Company AND T1.CustNum = T2.CustNum
+          LEFT OUTER JOIN CashDtl_" + Parameters!TableGuid.Value + " T3
+          ON T2.InvoiceNum = T3.InvoiceNum" + " WHERE T1.Company = '" + cstr(Parameters!Company.Value) + "' "  + " AND T1.CustNum = '" +
+          cstr(Parameters!CustNum.Value) + "' "  + " AND T2.CurrencyCode = '" + cstr(Parameters!CurrencyCode.Value) + "' "
+        </CommandText>
+        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+      </Query>
+      <Fields>
+        <Field Name="CustID">
+          <DataField>CustID</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DocInvoiceAmt">
+          <DataField>DocInvoiceAmt</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="DocInvoiceBal">
+          <DataField>DocInvoiceBal</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="InvoiceNum">
+          <DataField>InvoiceNum</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="DocWithholdAmt">
+          <DataField>DocWithholdAmt</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="CurrencyCode_CurrDesc">
+          <DataField>CurrencyCode_CurrDesc</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CreditMemo">
+          <DataField>CreditMemo</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="InvoiceSuffix">
+          <DataField>InvoiceSuffix</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="InvoiceType">
+          <DataField>InvoiceType</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CheckRef">
+          <DataField>CheckRef</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="DocTranAmt">
+          <DataField>DocTranAmt</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="InvoiceRef">
+          <DataField>InvoiceRef</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="TranType">
+          <DataField>TranType</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="CashDtl_InvoiceNum">
+          <DataField>CashDtl_InvoiceNum</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Calc_Reversed">
+          <DataField>Calc_Reversed</DataField>
+          <rd:TypeName>System.Boolean</rd:TypeName>
+        </Field>
+        <Field Name="Calc_DetailLine">
+          <DataField>Calc_DetailLine</DataField>
+          <rd:TypeName>System.Int32</rd:TypeName>
+        </Field>
+        <Field Name="Calc_IsCM">
+          <DataField>Calc_IsCM</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="Calc_DisplayAmount">
+          <DataField>Calc_DisplayAmount</DataField>
+          <rd:UserDefined>true</rd:UserDefined>
+        </Field>
+        <Field Name="DocDtlTranAmt">
+          <DataField>Calc_DocDtlTranAmount</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="DocDtlTranAmtSignAdjusted">
+          <DataField>Calc_DocDtlTranAmountSignAdjusted</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="Charge">
+          <DataField>Calc_Charge</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+        <Field Name="CMemo">
+          <DataField>Calc_CMemo</DataField>
+          <rd:TypeName>System.Decimal</rd:TypeName>
+        </Field>
+      </Fields>
+    </DataSet>
+    <DataSet Name="RptParameter">
+      <Query>
+        <DataSourceName>CustSt_Total</DataSourceName>
+        <CommandText>="SELECT DecimalsGeneral
+  FROM RptParameter_" + Parameters!TableGuid.Value</CommandText>
+      </Query>
+      <Fields>
+        <Field Name="DecimalsGeneral">
+          <DataField>DecimalsGeneral</DataField>
+          <rd:UserDefined>true</rd:UserDefined>
+        </Field>
+      </Fields>
+    </DataSet>
+  </DataSets>
+  <ReportParameters>
+    <ReportParameter Name="TableGuid">
+      <DataType>String</DataType>
+      <Prompt>TableGuid</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="Company">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>Company</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="CustNum">
+      <DataType>Integer</DataType>
+      <Nullable>true</Nullable>
+      <Prompt>CustNum</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="CurrencyCode">
+      <DataType>String</DataType>
+      <Nullable>true</Nullable>
+      <AllowBlank>true</AllowBlank>
+      <Prompt>CurrencyCode</Prompt>
+    </ReportParameter>
+  </ReportParameters>
+  <Code>
+    Public Charge as Decimal
+    Public CMemo as Decimal
+
+    Public Function SetChargeAndCMemo(val1 as Decimal, val2 as Decimal) as Boolean
+    Charge = val1
+    CMemo = val2
+    Return true
+    End Function
+  </Code>
+  <Language>=User!Language</Language>
+  <rd:ReportUnitType>Inch</rd:ReportUnitType>
+  <rd:ReportID>1db6538d-6739-47c6-bb1a-58cde3758038</rd:ReportID>
+</Report>
