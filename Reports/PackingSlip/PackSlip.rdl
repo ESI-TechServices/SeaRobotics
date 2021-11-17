@@ -1380,7 +1380,7 @@ Fields!PartNum.Value,Switch(Fields!Calc_CustPartOpts.Value="M",Fields!PartNum.Va
                                   </Style>
                                 </Paragraph>
                               </Paragraphs>
-                              <Left>3.22937in</Left>
+                              <Left>3.10437in</Left>
                               <Height>0.18in</Height>
                               <Width>0.49in</Width>
                               <ZIndex>1</ZIndex>
@@ -1407,9 +1407,9 @@ Fields!PartNum.Value,Switch(Fields!Calc_CustPartOpts.Value="M",Fields!PartNum.Va
                                   </Style>
                                 </Paragraph>
                               </Paragraphs>
-                              <Left>3.73937in</Left>
+                              <Left>3.66381in</Left>
                               <Height>0.18in</Height>
-                              <Width>1.45in</Width>
+                              <Width>4.09619in</Width>
                               <ZIndex>2</ZIndex>
                               <Style>
                                 <Border />
@@ -2107,6 +2107,7 @@ Fields!PartNum.Value,Switch(Fields!Calc_CustPartOpts.Value="M",Fields!PartNum.Va
                             </Border>
                           </Style>
                         </Rectangle>
+                        <rd:Selected>true</rd:Selected>
                       </CellContents>
                     </TablixCell>
                   </TablixCells>
@@ -4179,7 +4180,7 @@ Fields!RptLiteralsLblSrlNum.Value &amp; ":",Fields!RptLiteralsLblSrlNums.Value &
                                                         </TablixMember>
                                                         <TablixMember>
                                                           <Visibility>
-                                                            <Hidden>=(Fields!Calc_ShipToAddress.Value = Fields!Calc_MarkForAddress.Value) OR (Ucase(Fields!OrderLine_KitFlag.Value)="C")</Hidden>
+                                                            <Hidden>true</Hidden>
                                                           </Visibility>
                                                           <KeepWithGroup>After</KeepWithGroup>
                                                         </TablixMember>
