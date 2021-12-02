@@ -5198,7 +5198,7 @@
                 </Border>
               </Style>
             </Textbox>
-            <Textbox Name="LblCompany">
+            <Textbox Name="LblCompany_orig">
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
@@ -5214,13 +5214,13 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>0.46765in</Top>
-              <Left>1.30988in</Left>
+              <Top>0.71709in</Top>
+              <Left>3.32666in</Left>
               <Height>0.17in</Height>
               <Width>1.67708in</Width>
               <ZIndex>2</ZIndex>
               <Visibility>
-                <Hidden>=not First(Fields!Calc_PrintCompanyName.Value, "Company")</Hidden>
+                <Hidden>true</Hidden>
               </Visibility>
               <Style>
                 <Border>
@@ -5357,6 +5357,37 @@
                 </Border>
                 <BackgroundColor>Silver</BackgroundColor>
                 <VerticalAlign>Top</VerticalAlign>
+              </Style>
+            </Textbox>
+            <Textbox Name="LblCompany">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=split(First(Fields!Calc_Address.Value,"Company"),"~")(0).ToString</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Center</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>0.46315in</Top>
+              <Left>1.30988in</Left>
+              <Height>0.1745in</Height>
+              <Width>1.67708in</Width>
+              <ZIndex>8</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
               </Style>
             </Textbox>
           </ReportItems>
